@@ -1,14 +1,18 @@
+// src/index.tsx
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+import "./index.scss";
+import App from "./App";
 
-import Clock from './Clock.jsx';
+const rootElement = document.getElementById("root");
 
-const App = () => {
-  return (<Clock/>)
-};
-
-const rootElement = document.getElementById("app");
 if (rootElement) {
-  // Temporarily cast ReactDOM to any to bypass TypeScript error
-  (ReactDOM as any).createRoot(rootElement).render(<App />);
+  const root = createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} else {
+  console.error("Failed to find root element");
 }

@@ -9,6 +9,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"], // File extensions to resolve
+    fallback: {
+      path: require.resolve("path-browserify"), // Polyfill for 'path' module
+      child_process: false, // No polyfill needed for 'child_process'
+    },
   },
   module: {
     rules: [
@@ -26,6 +30,14 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react"], // Babel presets
           },
         },
+      },
+      {
+        test: /\.css$/, // Match CSS files
+        use: ["style-loader", "css-loader"], // Use style-loader and css-loader for CSS files
+      },
+      {
+        test: /\.scss$/, // Match SCSS files
+        use: ["style-loader", "css-loader", "sass-loader"], // Use style-loader, css-loader, and sass-loader for SCSS files
       },
     ],
   },
