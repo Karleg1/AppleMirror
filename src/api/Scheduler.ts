@@ -1,6 +1,7 @@
 // src/api/scheduler.ts
+
 import schedule from "node-schedule";
-import { fetchTwoWeekWeatherData } from "./weatherApi";
+import { fetchTwoWeekWeatherData } from "./WeatherApi";
 
 const scheduleDailyFetch = (callback: (data: any) => void) => {
   // Schedule task to run every day at 1:00 AM

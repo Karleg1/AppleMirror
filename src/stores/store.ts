@@ -1,26 +1,31 @@
 // src/stores/store.ts
-import { observable, action, makeAutoObservable } from "mobx";
+
+import { makeAutoObservable, action } from "mobx";
 
 class Store {
-  @observable currentTime: string = "";
-  @observable currentDate: string = "";
-  @observable openedApp: string | null = null;
+  currentTime: string = "";
+  currentDate: string = "";
+  openedApp: string | null = null;
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {
+      setTime: action,
+      setDate: action,
+      setOpenedApp: action,
+    });
   }
 
-  @action setTime(time: string) {
+  setTime = (time: string) => {
     this.currentTime = time;
-  }
+  };
 
-  @action setDate(date: string) {
+  setDate = (date: string) => {
     this.currentDate = date;
-  }
+  };
 
-  @action setOpenedApp(app: string | null) {
+  setOpenedApp = (app: string | null) => {
     this.openedApp = app;
-  }
+  };
 }
 
 const store = new Store();

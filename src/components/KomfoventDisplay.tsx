@@ -1,3 +1,5 @@
+// src/components/KomfoventDisplay.tsx
+
 import React from 'react';
 
 const Display: React.FC = () => {

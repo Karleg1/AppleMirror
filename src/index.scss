@@ -10,11 +10,19 @@ body, html, #root, .app-container {
   grid-column: 5 / 18;
   grid-row: 3 / 13;
 
+  .clock span.hours-minutes {
+    font-size: 24px;
+  }
+
+  .clock span.seconds {
+    font-size: 12px;
+  }
+
+  .date {
+
+  }
 }
 
-.clock {
-
-}
 
 .screen-saver {
   display: grid;

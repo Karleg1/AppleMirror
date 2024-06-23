@@ -1,25 +1,40 @@
-import React, { useState, useEffect } from 'react';
+// src/components/Clock.tsx
+import React, { useEffect, useState } from "react";
+import { observer } from "mobx-react";
+import store from "../stores/store";
 
-export const DateTime = () => {
-  var [date, setDate] = useState(new Date());
+const DateTime = observer(() => {
+  const [hoursMinutes, setHoursMinutes] = useState("");
+  const [seconds, setSeconds] = useState("");
 
   useEffect(() => {
-    var timer = setInterval(() => setDate(new Date()), 1000);
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  });
+    const timer = setInterval(() => {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      store.setTime(timeString);
+
+      const [h, m, s] = timeString.split(":");
+      const hoursMinutes = `${h}:${m}`;
+      setHoursMinutes(hoursMinutes);
+      setSeconds(s);
+
+      store.setDate(now.toLocaleDateString("en-GB", { day: "2-digit", month: "2-digit", year: "numeric" }));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="clock-container">
       <div className="clock">
-        <p> Time : {date.toLocaleTimeString()}</p>
+        <span className="hours-minutes">{hoursMinutes}</span>
+        <span className="seconds">:{seconds}</span>
       </div>
       <div className="date">
-        <p> Date : {date.toLocaleDateString()}</p>
+        <p>Date: {store.currentDate}</p>
       </div>
     </div>
   );
-};
+});
 
 export default DateTime;

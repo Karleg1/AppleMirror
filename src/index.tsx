@@ -1,8 +1,9 @@
-// src/index.tsx
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { Provider } from "mobx-react";
 import "./index.scss";
 import App from "./App";
+import store from "./stores/store"; // Import the MobX store
 
 const rootElement = document.getElementById("root");
 
@@ -10,7 +11,9 @@ if (rootElement) {
   const root = createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>
   );
 } else {

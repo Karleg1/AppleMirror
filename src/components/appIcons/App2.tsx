@@ -1,4 +1,5 @@
 // src/components/App2.tsx
+
 import React from "react";
 
 const App2: React.FC = () => {

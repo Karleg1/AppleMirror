@@ -1,6 +1,8 @@
 // src/components/Weather.tsx
-import React, { useEffect, useState } from 'react';
-import { fetchTwoWeekWeatherData } from '../api/weatherApi';
+
+import React, { useEffect, useState } from "react";
+import { fetchTwoWeekWeatherData } from "../api/WeatherApi";
+import scheduleDailyFetch from "../api/Scheduler";
 
 interface WeatherData {
   resolvedAddress: string;
@@ -15,7 +17,7 @@ const Weather: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const getWeatherData = async () => {
+  const fetchWeatherData = async () => {
     try {
       const data = await fetchTwoWeekWeatherData();
       setWeatherData(data);
@@ -25,7 +27,19 @@ const Weather: React.FC = () => {
   };
 
   useEffect(() => {
-    getWeatherData();
+    // Fetch weather data initially
+    if (!weatherData) {
+      console.log("No weather data, calling getWeatherData");
+      fetchWeatherData();
+    }
+
+    // Schedule daily fetch
+    const job = scheduleDailyFetch(fetchWeatherData);
+
+    // Cleanup function to cancel job if component unmounts
+    return () => {
+      job.cancel(); // Cancel the scheduled job on component unmount
+    };
   }, []);
 
   if (error) {
