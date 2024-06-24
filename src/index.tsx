@@ -1,7 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "mobx-react";
-import "./index.scss";
+import "./styles/index.scss";
+import "./styles/ScreenSaverStyles.scss";
+import "./styles/WeatherStyles.scss";
 import App from "./App";
 import store from "./stores/store"; // Import the MobX store
 

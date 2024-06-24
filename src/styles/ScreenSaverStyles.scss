@@ -1,0 +1,62 @@
+.screen-saver {
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+
+  .time-date-container {
+    grid-column: 1 / 21;
+    grid-row: 1 / -1;
+    height: 100%;
+    width: 100%;
+    background-color: green;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+
+    .clock-container {
+      grid-column: 5 / 18;
+      grid-row: 4 / 14;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .clock {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hours-minutes {
+        font-family: 'Roboto', sans-serif;
+        font-size: 150px;
+        font-weight: 100 !important;
+      }
+
+      .seconds {
+        font-size: 50px;
+      }
+
+      .date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .weather-container {
+    grid-column: 21 / -1;
+    grid-row: 1 / -1;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    display: grid;
+  }
+}

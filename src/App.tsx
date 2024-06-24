@@ -9,7 +9,7 @@ const App: React.FC = () => {
     <Router>
       <div className="app-container">
         <Routes>
-          <Route path="/" element={<ScreenSaver />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </Router>

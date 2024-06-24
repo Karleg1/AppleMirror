@@ -1,0 +1,105 @@
+/* src/styles/Weather.scss */
+
+.current-weather {
+  /* General styling for the weather widget */
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+  
+  /* iOS widget specific styling */
+  &.ios-weather-widget {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .temperature {
+    font-size: 72px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .conditions {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+
+  .additional-info {
+    margin-top: 20px;
+
+    p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+  }
+
+  .hourly-forecast {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    .hour {
+      text-align: center;
+      margin-right: 20px;
+      flex: 0 0 auto;
+
+      p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  .sunrise-sunset {
+    margin-top: 20px;
+
+    p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+  }
+}
+
+.forecast-weather {
+  /* Styling for the 10-day forecast component */
+  .day {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+}

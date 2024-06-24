@@ -3,7 +3,7 @@ import React from "react";
 
 import Clock from "./Clock";
 import Display from "./KomfoventDisplay";
-import Weather from "./Weather";
+import Weather from "./weatherComponents/Weather";
 
 const ScreenSaver: React.FC = () => {
   return (
